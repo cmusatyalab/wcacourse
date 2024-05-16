@@ -18,22 +18,36 @@ At this point, you are ready and able to actually use your sandwich application.
 These steps are described in more detail below. Your development environment consists of three components:
 1. A *linux laptop* that you will use to connect to CVAT, OpenTPOD, OpenWorkFlow, and the GatingWCA server.
 2. A *GatingWCA server (actually, an AWS VM)* that is preconfigured with the credentials and components you need.
-3. An *Android SmartPhone* that serves as a video data capture device and as the WCA application client.
+3. An *Android smartphone* that serves as a video data capture device and as the WCA application client.
+
+## Data Collection
+
+## Video Upload
 
 
+## Annotate the Dataset
 
+## Transfer the Dataset to the Training System
 
-Steps in process
+## Train the Object Detector
 
-Take video of steps with phone
-Upload videos to CVAT
-Annotate in CVAT
-Download annotated dataset to VM
-Train yolo object detector
-Create openworkflow state machine
-Download pbfsm file, copy to VM
-Run GatingWCA backend with pbfsm + yolo-model.pt
-Phone will be preconfigured to talk to specific VM backend
+## Define the Application Logic
+https://github.com/cmusatyalab/OpenWorkflow
+
+## Install the FSM and object detector in your WCA Backend
+
+## Run the WCA Backend
+
+## Connect your WCA Client to the Backend
+
+## Team Specific Information
+
+| Team | Account                  | DOMAIN_NAME                   | IP Address     |
+| ---- | ------------------------ | ----------------------------- | -------------- |
+| 1    | cmusatyalab001@gmail.com | lmtraining1.livingedgelab.org | 52.21.253.39   |
+| 2    | cmusatyalab002@gmail.com | lmtraining2.livingedgelab.org | 34.202.133.19  |
+| 3    | cmusatyalab003@gmail.com | lmtraining3.livingedgelab.org | 34.230.218.14  |
+| 4    | cmusatyalab004@gmail.com | lmtraining4.livingedgelab.org | 174.129.14.131 |
 
 3rd day
 CVAT
