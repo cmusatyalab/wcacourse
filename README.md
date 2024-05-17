@@ -49,11 +49,24 @@ OpenWorkFlow
 [Access the Tool](https://cmusatyalab.github.io/OpenWorkflow/)
 <NEED DIRECTIONS>
 
+From the OpenWorkFlow, create your application finite state machine:
+1. Create a `Start` state.
+2. Create your first task state (e.g., `Bread`). Add a `YoloProcessor` to this state. Make sure you add in the conf_threshold. Leaving the default will cause an error. The model_path should be `/home/wcastudent/model/<YOUR_MODEL_FILE>.pt`.
+3. Add a transition between the Start state and the Bread state. Enter in an Audio Instruction for the task that the user should do to progress to the Bread state (e.g., *Put the Bread on the Table*). Do not add a predicate.
+4. Create your second task state (e.g., `Bread-Lettuce`) with a `YoloProcessor`. Make sure you add in the conf_threshold.
+5. Add a transition between the Bread state and the Bread-Lettuce state. Enter in an Audio Instruction for the task that the user should do to progress to the Bread-Lettuce state (e.g., *Put the Lettuce on the Bread*). Add a `HasObjectClass` Predictate. *Is class name the class number or a name?*
+6. Continuing adding states and transitions until your have completed building the sandwich.
+7. End the FSM with a `Finished`state and a transition from the last task state.
+
+Your completed FSM will look something like this:
+![image](https://github.com/cmusatyalab/wcacourse/assets/6760112/8feddc0d-666b-4c0f-bb9a-402852d5f406)
+
+Now, now `Export` the FSM to your laptop. The `app.pbfsm` file will be used in the following steps.
+
 ## Install the FSM and object detector in your WCA Backend
-Download the pbfsm file from OpenWorkFlow onto your laptop.
 <NEED DIRECTIONS>
 
-Upload the pbfsm file to the cloudlet. From your laptop:
+Upload the `app.pbfsm` file to the cloudlet. From your laptop:
 ```
 scp -i ~/.ssh/wca-student.pem <PATHTOFSMFILE> wcastudent@<DOMAIN_NAME>:GatingWCA/server/app.pbfsm
 ```
@@ -61,7 +74,7 @@ Login to your backend:
 ```
 ssh -i ~/.ssh/wca-student.pem <PATHTOFSMFILE> wcastudent@<DOMAIN_NAME>
 ```
-Copy the model into the path defined in your pbfsm file. Try to make it `/home/wcastudent/models`.
+Copy the model into the path defined in your pbfsm file.
 ```
 cp <TPOD_DOWNLOAD_DIR>/<MODELFILE> /home/wcastudent/models/
 ```
