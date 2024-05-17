@@ -44,7 +44,9 @@ Upload the dataset on the cloudlet. Where?
 Where does the model end up?
 
 ## Define the Application Logic
-https://github.com/cmusatyalab/OpenWorkflow
+OpenWorkFlow
+[Documentation](https://github.com/cmusatyalab/OpenWorkflow)
+[Access the Tool](https://cmusatyalab.github.io/OpenWorkflow/)
 <NEED DIRECTIONS>
 
 ## Install the FSM and object detector in your WCA Backend
