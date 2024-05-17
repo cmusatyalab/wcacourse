@@ -21,28 +21,63 @@ These steps are described in more detail below. Your development environment con
 3. An *Android smartphone* that serves as a video data capture device and as the WCA application client.
 
 ## Data Collection
+Collect a series of X to Y videos of approximately Z length using your smartphone camera. Videos should contain ... <NEED SOME HELP WITH THIS>
 
 ## Video Upload
-
+<NEED DIRECTIONS> I believe this is done directly from the smartphone
+https://cvat.cmusatyalab.org/auth/login
 
 ## Annotate the Dataset
+Connect your laptop to the cvat server and login.
+<NEED DIRECTIONS>
 
 ## Transfer the Dataset to the Training System
+Download the dataset that you created above in yolo format to your laptop. Is this where opentpod dedup, etc., steps happen? <NEED DIRECTIONS>
+<SCREENSHOT>
+<NEED DIRECTIONS>
+
+Upload the dataset on the cloudlet. Where?
+<NEED DIRECTIONS>
 
 ## Train the Object Detector
+<NEED DIRECTIONS>
+Where does the model end up?
 
 ## Define the Application Logic
 https://github.com/cmusatyalab/OpenWorkflow
+<NEED DIRECTIONS>
 
 ## Install the FSM and object detector in your WCA Backend
+Download the pbfsm file from OpenWorkFlow onto your laptop.
+<NEED DIRECTIONS>
+
+Upload the pbfsm file to the cloudlet. From your laptop:
+```
+scp -i ~/.ssh/wca-student.pem <PATHTOFSMFILE> wcastudent@<DOMAIN_NAME>:GatingWCA/server/app.pbfsm
+```
+Login to your backend:
+```
+ssh -i ~/.ssh/wca-student.pem <PATHTOFSMFILE> wcastudent@<DOMAIN_NAME>
+```
+Copy the model into the path defined in your pbfsm file. Try to make it `/home/wcastudent/models`.
+```
+cp <TPOD_DOWNLOAD_DIR>/<MODELFILE> /home/wcastudent/models/
+```
 
 ## Run the WCA Backend
+From the cloudlet
+```
+source venv-opentpod/bin/activate
+cd GatingWCA/server
+python3 server.py <PBFSMFILE>
+```
 
 ## Connect your WCA Client to the Backend
+<NEED DIRECTION>
 
 ## Team Specific Information
 
-| Team | Account                  | DOMAIN_NAME                   | IP Address     |
+| Team | Account                  | CLOUDLET NAME                 | IP Address     |
 | ---- | ------------------------ | ----------------------------- | -------------- |
 | 1    | cmusatyalab001@gmail.com | lmtraining1.livingedgelab.org | 52.21.253.39   |
 | 2    | cmusatyalab002@gmail.com | lmtraining2.livingedgelab.org | 34.202.133.19  |
