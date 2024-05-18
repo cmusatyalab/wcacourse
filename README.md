@@ -5,8 +5,8 @@ Each student will be assigned to a team. The team specific information is provid
 
 1. **Data Collection** -- Use your smart phone to collect videos of the sandwich components and sub-assemblies. These videos will be used in the following two steps to create a training and testing dataset a WCA object detector.
 2. **Video Upload** -- Upload your videos to the CVAT annotation tool.
-3. **Annotate the Dataset** -- Use CVAT to convert the videos into a labeled yolo dataset.
-4. **Prepare the Dataset on the Training System** -- Download the dataset from CVAT into the cloudlet that will be used for training an object detector. Clean and filter the dataset.
+3. **Annotate the Dataset** -- Use CVAT to convert the videos into a labeled dataset.
+4. **Prepare the Dataset for Training** -- Download the dataset from CVAT into the cloudlet that will be used for training an object detector. Clean and filter the dataset.
 6. **Train the Object Detector** -- Use the *OpenTPOD* tools to train an object detection neural network model for your application.
 7. **Define the Application Logic** -- Use the *OpenWorkFlow* tool to define a finite state machine (FSM) and corresponding user prompts for your application.
 8. **Install the FSM and object detector in your WCA Backend** -- Move the application-specifc `*.pbfm` and `*.pt` files into the *GatingFSM* server.
@@ -51,8 +51,7 @@ In this step, you are labeling the objects and sub-assemblies in your applicatio
 * You can select the method (e.g., rectangle, polygon) you will use to draw bounding boxes around your objects when you create the label. If you select `Any`, youc can use different methods as you annotate. Polygons are more accurate than other methods. Rectangles are easier to reposition.
 * Make sure you use `Track` when you initiate labeling of a particular object.
 
-## Prepare the Dataset on the Training System
-
+## Prepare the Dataset for Training
 SSH into your VM from the laptop and then download and manipulate the dataset using opentpod-tools and datumaro. See the [opentpod-tools](https://github.com/cmusatyalab/opentpod-tools) for more info.
 
 ```sh
