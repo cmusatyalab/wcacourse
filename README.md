@@ -40,12 +40,14 @@ Using the browser on the smartphone:
 ## Annotate the Dataset
 In this step, you are labeling the objects and sub-assemblies in your application. You will use [CVAT](https://docs.cvat.ai/docs/) to do the labeling (*aka annotation*)
 * Using the browser on the laptop, navigate to [CVAT](https://cvat.cmusatyalab.org/auth/login) and login using your [credentials](https://github.com/cmusatyalab/wcacourse/edit/main/README.md#team-specific-information).
-* Open the project you created from your phone.
+* Open the project and task you created from your phone.
 * Add the labels that you will use in your project. 
-* Open the job.
+* Create a new job and open it.
 * Add labels to your video starting from the beginning.
-<NEED DIRECTIONS>
+* When you are done labeling, `Save`. Then, go to the `Jobs` page, find your job, click the three dots and select `Finish Job`
+
 ### *Pro Tips*
+* You will need a task for each video that you label.
 * You can select the method (e.g., rectangle, polygon) you will use to draw bounding boxes around your objects when you create the label. If you select `Any`, youc can use different methods as you annotate. Polygons are more accurate than other methods. Rectangles are easier to reposition.
 * Make sure you use `Track` when you initiate labeling of a particular object.
 
@@ -82,6 +84,9 @@ Convert the dataset into the format used for the `yolo` object detector.
 $ datum convert -i split -f yolo_ultralytics -o yolo-dataset -- --save-media
 ```
 The `yolo-dataset` is now ready to be used in training. If you iterate back through this section, you will need to remove all the directories created before you begin.
+
+### *Pro Tips*
+* If you have more than one task in the project, you will need to merge the seperate datasets created by CVAT before filtering. See [opentpod-tools](https://github.com/cmusatyalab/opentpod-tools).
 
 ## Train the Object Detector
 
