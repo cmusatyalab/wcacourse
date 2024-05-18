@@ -21,14 +21,33 @@ These steps are described in more detail below. Your development environment con
 3. An *Android smartphone* that serves as a video data capture device and as the WCA application client.
 
 ## Data Collection
-Collect a series of X to Y videos of approximately Z length using your smartphone camera. Videos should contain ... <NEED SOME HELP WITH THIS>
+Take video(s) of a total of 1-2 minutes in length using your smartphone camera. Videos should contain the all the objects individually and the sub-assemblies of objects.  <NEED SOME HELP WITH THIS>
+
+### *Pro Tips*
+* Take your videos from a variety of directions and orientations
+* Use the background and lighting that you will be testing when creating the videos
 
 ## Video Upload
-Using the browser on the phone, navigate to [CVAT](https://cvat.cmusatyalab.org/auth/login) and login using your [credentials](https://github.com/cmusatyalab/wcacourse/edit/main/README.md#team-specific-information). Upload the videos you captured in the previous step to a new project.
+Using the browser on the smartphone:
+* Navigate to [CVAT](https://cvat.cmusatyalab.org/auth/login) and login using your [credentials](https://github.com/cmusatyalab/wcacourse/edit/main/README.md#team-specific-information).
+* Create a new project and open it. Make a note of the project number. See image below.
+
+![image](https://github.com/cmusatyalab/wcacourse/assets/6760112/dc5138ed-50f2-45a5-8611-645cf6e8f154)
+
+* Create a new task. Before opening it, ...
+* Upload the videos you captured.
 
 ## Annotate the Dataset
-Connect your laptop to the cvat server and login.
+In this step, you are labeling the objects and sub-assemblies in your application. You will use [CVAT](https://docs.cvat.ai/docs/) to do the labeling (*aka annotation*)
+* Using the browser on the laptop, navigate to [CVAT](https://cvat.cmusatyalab.org/auth/login) and login using your [credentials](https://github.com/cmusatyalab/wcacourse/edit/main/README.md#team-specific-information).
+* Open the project you created from your phone.
+* Add the labels that you will use in your project. 
+* Open the job.
+* Add labels to your video starting from the beginning.
 <NEED DIRECTIONS>
+### *Pro Tips*
+* You can select the method (e.g., rectangle, polygon) you will use to draw bounding boxes around your objects when you create the label. If you select `Any`, youc can use different methods as you annotate. Polygons are more accurate than other methods. Rectangles are easier to reposition.
+* Make sure you use `Track` when you initiate labeling of a particular object.
 
 ## Prepare the Dataset on the Training System
 
