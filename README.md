@@ -95,7 +95,7 @@ Train a yolo model using the curated dataset. For more information on yolo, see 
 ```sh
 $ yolo detect train data=$(pwd)/yolo-dataset/data.yaml model=yolov8n.pt epochs=100 imgsz=640 project=yolo-project
 ```
-The results of the training can be found in `yolo-project/train`. The model you will use later is `yolo-project/train/weights/best.pt`.
+The results of the training can be found in `yolo-project/train`. The model you will use later is `yolo-project/train/weights/best.pt`. Copy this file to `/home/wcastudent/models`.
 
 ## Define the Application Logic
 OpenWorkFlow
@@ -105,7 +105,7 @@ OpenWorkFlow
 
 From the OpenWorkFlow, create your application finite state machine:
 1. Create a `Start` state.
-2. Create your first task state (e.g., `Bread`). Add a `YoloProcessor` to this state. Make sure you add in the conf_threshold. Leaving the default will cause an error. The model_path should be `/home/wcastudent/model/<YOUR_MODEL_FILE>.pt`.
+2. Create your first task state (e.g., `Bread`). Add a `YoloProcessor` to this state. Make sure you add in the conf_threshold. Leaving the default will cause an error. The model_path should be `/home/wcastudent/model/best.pt`.
 3. Add a transition between the Start state and the Bread state. Enter in an Audio Instruction for the task that the user should do to progress to the Bread state (e.g., *Put the Bread on the Table*). Do not add a predicate.
 4. Create your second task state (e.g., `Bread-Lettuce`) with a `YoloProcessor`. Make sure you add in the conf_threshold.
 5. Add a transition between the Bread state and the Bread-Lettuce state. Enter in an Audio Instruction for the task that the user should do to progress to the Bread-Lettuce state (e.g., *Put the Lettuce on the Bread*). Add a `HasObjectClass` Predictate. *Is class name the class number or a name?*
@@ -118,20 +118,16 @@ Your completed FSM will look something like this:
 Now, now `Export` the FSM to your laptop. The `app.pbfsm` file will be used in the following steps.
 
 ## Install the FSM and object detector in your WCA Backend
-<NEED DIRECTIONS>
 
 Upload the `app.pbfsm` file to the cloudlet. From your laptop:
 ```
-scp -i ~/.ssh/wca-student.pem <PATHTOFSMFILE> wcastudent@<DOMAIN_NAME>:GatingWCA/server/app.pbfsm
+scp -i ~/.ssh/wca-student.pem <PATHTO_app.pbfsm> wcastudent@<DOMAIN_NAME>:GatingWCA/server/app.pbfsm
 ```
 Login to your backend:
 ```
 ssh -i ~/.ssh/wca-student.pem wcastudent@<DOMAIN_NAME>
 ```
-Copy the model into the path defined in your pbfsm file.
-```
-cp <TPOD_DOWNLOAD_DIR>/<MODELFILE> /home/wcastudent/models/
-```
+Make sure your trained model is in `/home/wcastudent/models`
 
 ## Run the WCA Backend
 From the cloudlet
@@ -139,11 +135,11 @@ From the cloudlet
 cd
 source venv/bin/activate
 cd GatingWCA/server
-python3 server.py <PBFSMFILE>
+python3.8 server.py app.pbfsm
 ```
 
 ## Connect your WCA Client to the Backend
-<NEED DIRECTION>
+On your smartphone home screen, select the `WCA` icon. Make sure that Wi-Fi is on and you are connected to CMU-SECURE network.
 
 ## Team Specific Information
 
