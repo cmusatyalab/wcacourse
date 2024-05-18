@@ -48,7 +48,7 @@ In this step, you are labeling the objects and sub-assemblies in your applicatio
 
 ### *Pro Tips*
 * You will need a task for each video that you label.
-* You can select the method (e.g., rectangle, polygon) you will use to draw bounding boxes around your objects when you create the label. If you select `Any`, youc can use different methods as you annotate. Polygons are more accurate than other methods. Rectangles are easier to reposition.
+* You can select the method (e.g., rectangle, polygon) you will use to draw bounding boxes around your objects when you create the label. If you select `Any`, you can use different methods as you annotate. Polygons are more accurate than other methods. Rectangles are easier to reposition.
 * Make sure you use `Track` when you initiate labeling of a particular object.
 
 ## Prepare the Dataset for Training
