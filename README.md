@@ -66,15 +66,12 @@ The `yolo-dataset` is now ready to be used in training. If you iterate back thro
 
 ## Train the Object Detector
 
-Train a yolo model using the curated dataset.
+Train a yolo model using the curated dataset. For more information on yolo, see [here](https://docs.ultralytics.com/models/yolov8/). The following command trains a yolov8 object detector on your dataset over 100 epochs. 
 
 ```sh
-    # export to yolo_ultralytics format
-    $ datum convert -i split -f yolo_ultralytics -o yolo-dataset -- --save-media
-
-    # train an object detector model
-    $ yolo detect train data=$(pwd)/yolo-dataset/data.yaml model=yolov8n.pt epochs=100 imgsz=640 project=yolo-project
+$ yolo detect train data=$(pwd)/yolo-dataset/data.yaml model=yolov8n.pt epochs=100 imgsz=640 project=yolo-project
 ```
+The results of the training can be found in `yolo-project/train`. The model you will use later is `yolo-project/train/weights/best.pt`.
 
 ## Define the Application Logic
 OpenWorkFlow
