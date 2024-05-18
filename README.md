@@ -29,7 +29,7 @@ Take video(s) of a total of 1-2 minutes in length using your smartphone camera. 
 
 ## Video Upload
 Using the browser on the smartphone:
-* Navigate to [CVAT](https://cvat.cmusatyalab.org/auth/login) and login using your [credentials](https://github.com/cmusatyalab/wcacourse/edit/main/README.md#team-specific-information).
+* Navigate to [CVAT](https://cvat.cmusatyalab.org/auth/login) and login.
 * Create a new project and open it. Make a note of the project number. See image below.
 
 ![image](https://github.com/cmusatyalab/wcacourse/assets/6760112/dc5138ed-50f2-45a5-8611-645cf6e8f154)
