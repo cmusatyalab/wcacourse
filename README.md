@@ -6,7 +6,7 @@ Each student will be assigned to a team. The team specific information is provid
 1. **Data Collection** -- Use your smart phone to collect videos of the sandwich components and sub-assemblies. These videos will be used in the following two steps to create a training and testing dataset a WCA object detector.
 2. **Video Upload** -- Upload your videos to the CVAT annotation tool.
 3. **Annotate the Dataset** -- Use CVAT to convert the videos into a labeled yolo dataset.
-4. **Transfer the Dataset to the Training System** -- Download the dataset from CVAT and into the cloudlet that will be used for training an object detector.
+4. **Prepare the Dataset on the Training System** -- Download the dataset from CVAT into the cloudlet that will be used for training an object detector. Clean and filter the dataset.
 6. **Train the Object Detector** -- Use the *OpenTPOD* tools to train an object detection neural network model for your application.
 7. **Define the Application Logic** -- Use the *OpenWorkFlow* tool to define a finite state machine (FSM) and corresponding user prompts for your application.
 8. **Install the FSM and object detector in your WCA Backend** -- Move the application-specifc `*.pbfm` and `*.pt` files into the *GatingFSM* server.
@@ -30,33 +30,39 @@ Using the browser on the phone, navigate to [CVAT](https://cvat.cmusatyalab.org/
 Connect your laptop to the cvat server and login.
 <NEED DIRECTIONS>
 
-## Transfer the Dataset to the Training System
+## Prepare the Dataset on the Training System
 
-SSH to your VM from the laptop and then download and manipulate the dataset using opentpod-tools and datumaro.
+SSH into your VM from the laptop and then download and manipulate the dataset using opentpod-tools and datumaro. See the [opentpod-tools](https://github.com/cmusatyalab/opentpod-tools) for more info.
 
 ```sh
-    # upload videos to CVAT, and label them
-
-    # download labeled datasets
-    $ tpod-download [--project|--task|--job] <dataset0> .. <datasetN>
-
-    # merge datasets
-    $ datum merge [-o merged] <dataset0> .. <datasetN>
-
-    # filter frames with no annotations (and optionally annotated occlusions)
-    $ tpod-filter [--filter-occluded] [-o filtered] merged
-
-    # remove duplication
-    $ tpod-unique [-m sequential|random|complete] [-o unique] merged [-t 10 -r 0.7]
-    # -m --method: sequential, only check against the last 'unique' image
-    #              random, check against random subset of unique image list with [-r/--ratio]
-    #              exhaustive, check each new image against all chosen unique images
-    # -t --threshold: the difference between current image and unique image(s), default = 10
-
-    # split into training and validation subsets
-    $ datum transform -t random_split -o split unique -- -s train:0.9 -s val:0.1 [-s test:...]
+# On laptop
+> ssh -i ~/.ssh/wca-student.pem wcastudent@<DOMAIN_NAME>
+# On cloudlet
+$ source venv-opentpod/bin/activate
+# Download the dataset
+$ tpod-download --project <PROJECTNO> --url https://cvat.cmusatyalab.org --username <CVATUSERNAME> --password <CVATPASSWORD> --project <YOURPOJECTNO>
 ```
-
+Find the directory called `datumaro_project_<YOURPOJECTNO>`. This is your dataset name. Now, remove frames with no annotations.
+```sh
+$ tpod-filter <DATASETNAME>
+```
+You should see a new dataset directory called `filtered`. Remove frames with duplicate information.
+```sh
+$ tpod-unique filtered
+```
+You should see a new dataset directory called `unique`. Split the dataset into training and validation sets with 90% of the samples used for training and 10% for validation.
+```sh
+$ datum transform -t random_split -o split unique -- -s train:0.9 -s val:0.1
+```
+You should see a new dataset directory called `split`. You can inspect this dataset with:
+```sh
+$ datum dinfo split
+```
+Convert the dataset into the format used for the `yolo` object detector.
+```sh
+$ datum convert -i split -f yolo_ultralytics -o yolo-dataset -- --save-media
+```
+The `yolo-dataset` is now ready to be used in training. If you iterate back through this section, you will need to remove all the directories created before you begin.
 
 ## Train the Object Detector
 
@@ -99,7 +105,7 @@ scp -i ~/.ssh/wca-student.pem <PATHTOFSMFILE> wcastudent@<DOMAIN_NAME>:GatingWCA
 ```
 Login to your backend:
 ```
-ssh -i ~/.ssh/wca-student.pem <PATHTOFSMFILE> wcastudent@<DOMAIN_NAME>
+ssh -i ~/.ssh/wca-student.pem wcastudent@<DOMAIN_NAME>
 ```
 Copy the model into the path defined in your pbfsm file.
 ```
@@ -109,7 +115,8 @@ cp <TPOD_DOWNLOAD_DIR>/<MODELFILE> /home/wcastudent/models/
 ## Run the WCA Backend
 From the cloudlet
 ```
-source venv-opentpod/bin/activate
+cd
+source venv/bin/activate
 cd GatingWCA/server
 python3 server.py <PBFSMFILE>
 ```
