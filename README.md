@@ -6,18 +6,20 @@ Each student will be assigned to a team. The team specific information is provid
 1. **Data Collection** -- Use your smart phone to collect videos of the sandwich components and sub-assemblies. These videos will be used in the following two steps to create a training and testing dataset a WCA object detector.
 2. **Video Upload** -- Upload your videos to the CVAT annotation tool.
 3. **Annotate the Dataset** -- Use CVAT to convert the videos into a labeled dataset.
-4. **Prepare the Dataset for Training** -- Download the dataset from CVAT into the cloudlet that will be used for training an object detector. Clean and filter the dataset.
+4. **Prepare the Dataset for Training** -- Download the dataset from CVAT onto the cloudlet that will be used for training an object detector. Clean and filter the dataset.
 6. **Train the Object Detector** -- Use the *OpenTPOD* tools to train an object detection neural network model for your application.
 7. **Define the Application Logic** -- Use the *OpenWorkFlow* tool to define a finite state machine (FSM) and corresponding user prompts for your application.
-8. **Install the FSM and object detector in your WCA Backend** -- Move the application-specifc `*.pbfm` and `*.pt` files into the *GatingFSM* server.
-9. **Run the WCA Backend** -- Start the *GatingWCA* server. This server executes your application logi.
-10. **Connect your WCA Client to the Backend** -- Launch the client application which will establish a connection to your backend server.
+8. **Install the FSM and object detector in your WCA Backend** -- Move the application-specifc `*.pbfm` and `*.pt` files into the right locations on the cloudlet.
+9. **Run the WCA Backend** -- Start the *GatingWCA* server on the cloudlet. This server executes your application logic.
+10. **Connect your WCA Client to the Backend** -- Launch the client application which will establish a connection to your backend GatingWCA server.
 
 At this point, you are ready and able to actually use your sandwich application. You may find that you need to iterate some or all of these steps in order to get an acceptable detector and tune your FSM.
 
-These steps are described in more detail below. Your development environment consists of three components:
+These steps are described in more detail below. 
+
+Your development environment consists of three components:
 1. A *linux laptop* that you will use to connect to CVAT, OpenTPOD, OpenWorkFlow, and the GatingWCA server.
-2. A *GatingWCA server (actually, an AWS VM)* that is preconfigured with the credentials and components you need.
+2. A *cloudlet (actually, an AWS VM)* that is preconfigured with the credentials and components you need.
 3. An *Android smartphone* that serves as a video data capture device and as the WCA application client.
 
 ## Data Collection
@@ -25,7 +27,7 @@ Take video(s) of a total of 1-2 minutes in length using your smartphone camera. 
 
 ### *Pro Tips*
 * Take your videos from a variety of directions and orientations
-* Use the background and lighting that you will be testing when creating the videos
+* When creating the videos, use the same background and lighting that you will be use when running the application
 
 ## Video Upload
 Using the browser on the smartphone:
@@ -38,13 +40,13 @@ Using the browser on the smartphone:
 * Upload the videos you captured.
 
 ## Annotate the Dataset
-In this step, you are labeling the objects and sub-assemblies in your application. You will use [CVAT](https://docs.cvat.ai/docs/) to do the labeling (*aka annotation*)
-* Using the browser on the laptop, navigate to [CVAT](https://cvat.cmusatyalab.org/auth/login) and [login.](https://github.com/cmusatyalab/wcacourse/edit/main/README.md#team-specific-information).
+In this step, you are labeling the objects and sub-assemblies in your application. You will use [CVAT](https://docs.cvat.ai/docs/) to do the labeling (*aka annotation*).
+* Using the browser on the laptop, navigate to [CVAT](https://cvat.cmusatyalab.org/auth/login) and [login](https://github.com/cmusatyalab/wcacourse/edit/main/README.md#team-specific-information).
 * Open the project and task you created from your phone.
 * Add the labels that you will use in your project. 
 * Create a new job and open it.
 * Add labels to your video starting from the beginning.
-* When you are done labeling, `Save`. Then, go to the `Jobs` page, find your job, click the three dots and select `Finish Job`
+* When you are done labeling, `Save`. Then, go to the `Jobs` page, find your job, click the three dots and select `Finish Job`.
 
 ### *Pro Tips*
 * You will need a task for each video that you label.
@@ -62,11 +64,11 @@ $ source venv-opentpod/bin/activate
 # Download the dataset
 $ tpod-download --project <PROJECTNO> --url https://cvat.cmusatyalab.org --username <CVATUSERNAME> --password <CVATPASSWORD> --project <YOURPOJECTNO>
 ```
-Find the directory called `datumaro_project_<YOURPOJECTNO>`. This is your dataset name. Now, remove frames with no annotations.
+Find the directory called `datumaro_project_<YOURPROJECTNO>`. This is your `DATASETNAME`. Now, remove frames with no annotations:
 ```sh
 $ tpod-filter <DATASETNAME>
 ```
-You should see a new dataset directory called `filtered`. Remove frames with duplicate information.
+You should see a new dataset directory called `filtered`. Remove frames with duplicate information:
 ```sh
 $ tpod-unique filtered
 ```
@@ -96,45 +98,50 @@ $ yolo detect train data=$(pwd)/yolo-dataset/data.yaml model=yolov8n.pt epochs=1
 ```
 The results of the training can be found in `yolo-project/train`. The model you will use later is `yolo-project/train/weights/best.pt`. Copy this file to `/home/wcastudent/models`.
 
+### *Pro Tips*
+* If you want to see the training results, inspect `yolo-project/train/results.csv`. The images in this directory show various plots of the training metrics. To view these plots, `scp` the files back to your laptop.
+* After the first training iteration, subsequent training results will be in `yolo-project/traing<ITERATION_NO>`. Make sure to update the model in `/home/wcastudent/models` after each successful iteration.
+
+
 ## Define the Application Logic
-OpenWorkFlow
-[Documentation](https://github.com/cmusatyalab/OpenWorkflow)
-[Access the Tool](https://cmusatyalab.github.io/OpenWorkflow/)
-<NEED DIRECTIONS>
+Use the *OpenWorkFlow* tool to define a finite state machine (FSM) and corresponding user prompts for your application. [Documentation](https://github.com/cmusatyalab/OpenWorkflow) [Access the Tool](https://cmusatyalab.github.io/OpenWorkflow/)
 
 From the OpenWorkFlow, create your application finite state machine:
 1. Create a `Start` state.
 2. Create your first task state (e.g., `Bread`). Add a `YoloProcessor` to this state. Make sure you add in the conf_threshold. Leaving the default will cause an error. The model_path should be `/home/wcastudent/model/best.pt`.
-3. Add a transition between the Start state and the Bread state. Enter in an Audio Instruction for the task that the user should do to progress to the Bread state (e.g., *Put the Bread on the Table*). Do not add a predicate.
+3. Add a transition between the Start state and the Bread state. Enter in an `Audio Instruction` for the task that the user should do to progress to the Bread state (e.g., *Put the Bread on the Table*). Add a Do not add a predicate.
 4. Create your second task state (e.g., `Bread-Lettuce`) with a `YoloProcessor`. Make sure you add in the conf_threshold.
-5. Add a transition between the Bread state and the Bread-Lettuce state. Enter in an Audio Instruction for the task that the user should do to progress to the Bread-Lettuce state (e.g., *Put the Lettuce on the Bread*). Add a `HasObjectClass` Predictate. *Is class name the class number or a name?*
+5. Add a transition between the Bread state and the Bread-Lettuce state. Enter in an `Audio Instruction` for the task that the user should do to progress to the Bread-Lettuce state (e.g., *Put the Lettuce on the Bread*). Add a `HasObjectClass` Predictate. *Is class name the class number or a name?*
 6. Continuing adding states and transitions until your have completed building the sandwich.
-7. End the FSM with a `Finished`state and a transition from the last task state.
+7. End the FSM with a `Finished` state and a transition from the last task state.
 
 Your completed FSM will look something like this:
 ![image](https://github.com/cmusatyalab/wcacourse/assets/6760112/8feddc0d-666b-4c0f-bb9a-402852d5f406)
 
 Now, now `Export` the FSM to your laptop. The `app.pbfsm` file will be used in the following steps.
 
+### *Pro Tips*
+* Optionally, add an `Image Instruction` to you transitions.
+
 ## Install the FSM and object detector in your WCA Backend
 
 Upload the `app.pbfsm` file to the cloudlet. From your laptop:
-```
-scp -i ~/.ssh/wca-student.pem <PATHTO_app.pbfsm> wcastudent@<DOMAIN_NAME>:GatingWCA/server/app.pbfsm
+```sh
+$ scp -i ~/.ssh/wca-student.pem <PATH_TO_app.pbfsm> wcastudent@<DOMAIN_NAME>:GatingWCA/server/app.pbfsm
 ```
 Login to your backend:
-```
-ssh -i ~/.ssh/wca-student.pem wcastudent@<DOMAIN_NAME>
+```sh
+$ ssh -i ~/.ssh/wca-student.pem wcastudent@<DOMAIN_NAME>
 ```
 Make sure your trained model is in `/home/wcastudent/models`
 
 ## Run the WCA Backend
 From the cloudlet
-```
-cd
-source venv/bin/activate
-cd GatingWCA/server
-python3.8 server.py app.pbfsm
+```sh
+$ cd
+$ source venv/bin/activate
+$ cd GatingWCA/server
+$ python3.8 server.py app.pbfsm
 ```
 
 ## Connect your WCA Client to the Backend
