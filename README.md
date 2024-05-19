@@ -111,7 +111,7 @@ From the OpenWorkFlow, create your application finite state machine:
 2. Create your first task state (e.g., `Bread`). Add a `YoloProcessor` to this state. Make sure you add in the conf_threshold. Leaving the default will cause an error. The model_path should be `/home/wcastudent/model/best.pt`.
 3. Add a transition between the Start state and the Bread state. Enter in an `Audio Instruction` for the task that the user should do to progress to the Bread state (e.g., *Put the Bread on the Table*). Add a Do not add a predicate.
 4. Create your second task state (e.g., `Bread-Lettuce`) with a `YoloProcessor`. Make sure you add in the conf_threshold.
-5. Add a transition between the Bread state and the Bread-Lettuce state. Enter in an `Audio Instruction` for the task that the user should do to progress to the Bread-Lettuce state (e.g., *Put the Lettuce on the Bread*). Add a `HasObjectClass` Predictate. *QUESTION: Is class name the class number or a name?*
+5. Add a transition between the Bread state and the Bread-Lettuce state. Enter in an `Audio Instruction` for the task that the user should do to progress to the Bread-Lettuce state (e.g., *Put the Lettuce on the Bread*). Add a `HasObjectClass` Predictate using the class name you are looking for from your object detector classes (e.g., `Bread`). 
 6. Continuing adding states and transitions until your have completed building the sandwich.
 7. End the FSM with a `Finished` state and a transition from the last task state.
 
@@ -121,6 +121,7 @@ Your completed FSM will look something like this:
 Now, now `Export` the FSM to your laptop. The `app.pbfsm` file will be used in the following steps.
 
 ### *Pro Tips*
+* States are defined from the *system's* point of view, not the *user's*. That means that a state is typically *"looking for the next object"* rather than *"waiting for the user to do something"*.
 * Optionally, add an `Image Instruction` to you transitions.
 
 ## Install the FSM and object detector in your WCA Backend
