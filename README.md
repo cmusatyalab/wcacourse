@@ -26,8 +26,8 @@ Your development environment consists of three components:
 Take video(s) of a total of 1-2 minutes in length using your smartphone camera. Videos should contain the all the objects individually and the sub-assemblies of objects.  <NEED SOME HELP WITH THIS>
 
 ### *Pro Tips*
-* Take your videos from a variety of directions and orientations
-* When creating the videos, use the same background and lighting that you will be use when running the application
+* Take your videos from a variety of directions and orientations.
+* When creating the videos, use the same background and lighting that you will be use when running the application.
 
 ## Video Upload
 Using the browser on the smartphone:
