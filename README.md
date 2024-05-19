@@ -111,7 +111,7 @@ From the OpenWorkFlow, create your application finite state machine:
 2. Create your first task state (e.g., `Bread`). Add a `YoloProcessor` to this state. Make sure you add in the conf_threshold. Leaving the default will cause an error. The model_path should be `/home/wcastudent/model/best.pt`.
 3. Add a transition between the Start state and the Bread state. Enter in an `Audio Instruction` for the task that the user should do to progress to the Bread state (e.g., *Put the Bread on the Table*). Add a Do not add a predicate.
 4. Create your second task state (e.g., `Bread-Lettuce`) with a `YoloProcessor`. Make sure you add in the conf_threshold.
-5. Add a transition between the Bread state and the Bread-Lettuce state. Enter in an `Audio Instruction` for the task that the user should do to progress to the Bread-Lettuce state (e.g., *Put the Lettuce on the Bread*). Add a `HasObjectClass` Predictate. *Is class name the class number or a name?*
+5. Add a transition between the Bread state and the Bread-Lettuce state. Enter in an `Audio Instruction` for the task that the user should do to progress to the Bread-Lettuce state (e.g., *Put the Lettuce on the Bread*). Add a `HasObjectClass` Predictate. *QUESTION: Is class name the class number or a name?*
 6. Continuing adding states and transitions until your have completed building the sandwich.
 7. End the FSM with a `Finished` state and a transition from the last task state.
 
@@ -158,10 +158,10 @@ On your smartphone home screen, select the `WCA` icon. Make sure that Wi-Fi is o
 
 
 
-## 3rd Day
+<!--- ## 3rd Day -->
 
-* __Labeling__ - [CVAT](https://github.com/cvat-ai/cvat)
-* __Dataset Management__ - [opentpod-tools](https://github.com/cmusatyalab/opentpod-tools/), Datumaro
-* __WCA Workflow__ - [OpenWorkflow](https://github.com/cmusatyalab/OpenWorkflow)
-* __Backend__ - [GatingWCA Python Server](https://github.com/cmusatyalab/GatingWCA/tree/main/server)
-* __Android App Development__ - [GatingWCA Android Application](https://github.com/cmusatyalab/GatingWCA/tree/main/android-client), [Android Studio](https://developer.android.com/studio) 
+<!--- * __Labeling__ - [CVAT](https://github.com/cvat-ai/cvat) -->
+<!--- * __Dataset Management__ - [opentpod-tools](https://github.com/cmusatyalab/opentpod-tools/), Datumaro -->
+<!--- * __WCA Workflow__ - [OpenWorkflow](https://github.com/cmusatyalab/OpenWorkflow) -->
+<!--- * __Backend__ - [GatingWCA Python Server](https://github.com/cmusatyalab/GatingWCA/tree/main/server) -->
+<!--- * __Android App Development__ - [GatingWCA Android Application](https://github.com/cmusatyalab/GatingWCA/tree/main/android-client), [Android Studio](https://developer.android.com/studio) --> 
