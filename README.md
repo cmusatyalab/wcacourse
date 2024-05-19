@@ -6,8 +6,8 @@ Each student will be assigned to a team. The team specific information is provid
 1. **Data Collection** -- Use your smart phone to collect videos of the sandwich components and sub-assemblies. These videos will be used in the following two steps to create a training and testing dataset for a WCA object detector.
 2. **Video Upload** -- Upload your videos to the CVAT annotation tool.
 3. **Annotate the Dataset** -- Use CVAT to convert the videos into a labeled dataset.
-4. **Prepare the Dataset for Training** -- Download the dataset from CVAT onto the cloudlet that will be used for training an object detector. Clean and filter the dataset.
-6. **Train the Object Detector** -- Use the *OpenTPOD* tools to train an object detection neural network model for your application.
+4. **Prepare the Dataset for Training** -- Download the dataset from CVAT onto the cloudlet that will be used for training an object detector.  Use the *OpenTPOD Tools* and *datumara* to clean and filter the dataset.
+6. **Train the Object Detector** -- Use *Yolo* to train an object detection neural network model for your application.
 7. **Define the Application Logic** -- Use the *OpenWorkFlow* tool to define a finite state machine (FSM) and corresponding user prompts for your application.
 8. **Install the FSM and object detector in your WCA Backend** -- Move the application-specifc `*.pbfm` and `*.pt` files into the right locations on the cloudlet.
 9. **Run the WCA Backend** -- Start the *GatingWCA* server on the cloudlet. This server executes your application logic.
