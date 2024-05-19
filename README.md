@@ -36,8 +36,7 @@ Using the browser on the smartphone:
 
 ![image](https://github.com/cmusatyalab/wcacourse/assets/6760112/dc5138ed-50f2-45a5-8611-645cf6e8f154)
 
-* Create a new task. Before opening it, ...
-* Upload the videos you captured.
+* Create a new task. Before opening it, upload the videos you captured into the task.
 
 ## Annotate the Dataset
 In this step, you are labeling the objects and sub-assemblies in your application. You will use [CVAT](https://docs.cvat.ai/docs/) to do the labeling (*aka annotation*).
@@ -51,6 +50,7 @@ In this step, you are labeling the objects and sub-assemblies in your applicatio
 ### *Pro Tips*
 * You will need a task for each video that you label.
 * You can select the method (e.g., rectangle, polygon) you will use to draw bounding boxes around your objects when you create the label. If you select `Any`, you can use different methods as you annotate. Polygons are more accurate than other methods. Rectangles are easier to reposition.
+* The better your bounding boxes, the more accurate your detector will be.
 * Make sure you use `Track` when you initiate labeling of a particular object.
 
 ## Prepare the Dataset for Training
