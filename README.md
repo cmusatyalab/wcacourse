@@ -88,9 +88,6 @@ $ datum convert -i split -f yolo_ultralytics -o yolo-dataset -- --save-media
 ```
 The `yolo-dataset` is now ready to be used in training. If you iterate back through this section, you will need to remove all the directories created before you begin.
 
-### *Pro Tips*
-* If you have more than one task in the project, you will need to merge the seperate datasets created by CVAT before filtering. See [opentpod-tools](https://github.com/cmusatyalab/opentpod-tools).
-
 ## Train the Object Detector
 
 Train a yolo model using the curated dataset. For more information on yolo, see [here](https://docs.ultralytics.com/models/yolov8/). The following command trains a yolov8 object detector on your dataset over 100 epochs. 
