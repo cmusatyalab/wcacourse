@@ -47,7 +47,7 @@ In this step, you are labeling the objects and sub-assemblies in your applicatio
 * Add labels to your video starting from the beginning.
 * When you are done labeling, `Save`. Then, go to the `Jobs` page, find your job, click the three dots and select `Finish Job`.
 
-For more information on how to use CVAT
+For more information on how to use CVAT, see the [CVAT](https://docs.cvat.ai/docs/) documentation.
 
 ### *Pro Tips*
 * You will need a task for each video that you label.
