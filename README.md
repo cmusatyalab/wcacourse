@@ -168,9 +168,9 @@ On your smartphone home screen, select the `WCA` icon. Make sure that Wi-Fi is o
 
 
 <!--- ## 3rd Day -->
-
-<!--- * __Labeling__ - [CVAT](https://github.com/cvat-ai/cvat) -->
-<!--- * __Dataset Management__ - [opentpod-tools](https://github.com/cmusatyalab/opentpod-tools/), Datumaro -->
-<!--- * __WCA Workflow__ - [OpenWorkflow](https://github.com/cmusatyalab/OpenWorkflow) -->
-<!--- * __Backend__ - [GatingWCA Python Server](https://github.com/cmusatyalab/GatingWCA/tree/main/server) -->
-<!--- * __Android App Development__ - [GatingWCA Android Application](https://github.com/cmusatyalab/GatingWCA/tree/main/android-client), [Android Studio](https://developer.android.com/studio) --> 
+## References
+* __Labeling__ - [CVAT](https://github.com/cvat-ai/cvat)
+* __Dataset Management__ - [opentpod-tools](https://github.com/cmusatyalab/opentpod-tools/), Datumaro
+* __WCA Workflow__ - [OpenWorkflow](https://github.com/cmusatyalab/OpenWorkflow)
+* __Backend__ - [GatingWCA Python Server](https://github.com/cmusatyalab/GatingWCA/tree/main/server)
+* __Android App Development__ - [GatingWCA Android Application](https://github.com/cmusatyalab/GatingWCA/tree/main/android-client), [Android Studio](https://developer.android.com/studio)
