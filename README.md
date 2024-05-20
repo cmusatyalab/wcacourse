@@ -9,7 +9,7 @@ Each student will be assigned to a team. The **team specific information is prov
 4. **Prepare the Dataset for Training** -- Download the dataset from CVAT onto the cloudlet that will be used for training an object detector.  Use the *OpenTPOD Tools* and *datumaro* to clean and filter the dataset.
 6. **Train the Object Detector** -- Use *Yolo* to train an object detection neural network model for your application.
 7. **Define the Application Logic** -- Use the *OpenWorkFlow* tool to define a finite state machine (FSM) and corresponding user prompts for your application.
-8. **Install the FSM and object detector in your WCA Backend** -- Move the application-specifc `*.pbfm` and `*.pt` files into the right locations on the cloudlet.
+8. **Install the FSM and object detector in your WCA Backend** -- Move the application-specifc `*.pbfsm` and `*.pt` files into the right locations on the cloudlet.
 9. **Run the WCA Backend** -- Start the *GatingWCA* server on the cloudlet. This server executes your application logic.
 10. **Connect your WCA Client to the Backend** -- Launch the client application which will establish a connection to your backend GatingWCA server.
 
@@ -116,8 +116,8 @@ Use the *OpenWorkFlow* tool to define a finite state machine (FSM) and correspon
 
 From OpenWorkFlow, create your application finite state machine:
 1. Create a `Start` state.
-2. Create your first task state (e.g., `Bread`). Add a `YoloProcessor` to this state. Make sure you add in the conf_threshold. Leaving the default will cause an error. The model_path should be `/home/wcastudent/model/best.pt`.
-3. Add a transition between the Start state and the Bread state. Enter in an `Audio Instruction` for the task that the user should do to progress to the Bread state (e.g., *Put the Bread on the Table*). Add a Do not add a predicate.
+2. Create your first task state (e.g., `Bread`). Add a `YoloProcessor` to this state. Make sure you add in the conf_threshold. Leaving the default will cause an error. The model_path should be `/home/wcastudent/models/best.pt`.
+3. Add a transition between the Start state and the Bread state. Enter in an `Audio Instruction` for the task that the user should do to progress to the Bread state (e.g., *Put the Bread on the Table*). Add an "Always" predicate.
 4. Create your second task state (e.g., `Bread-Lettuce`) with a `YoloProcessor`. Make sure you add in the conf_threshold.
 5. Add a transition between the Bread state and the Bread-Lettuce state. Enter in an `Audio Instruction` for the task that the user should do to progress to the Bread-Lettuce state (e.g., *Put the Lettuce on the Bread*). Add a `HasObjectClass` Predictate using the class name you are looking for from your object detector classes (e.g., `Bread`). 
 6. Continuing adding states and transitions until your have completed building the sandwich.
