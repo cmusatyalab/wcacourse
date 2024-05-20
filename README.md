@@ -121,7 +121,8 @@ From OpenWorkFlow, create your application finite state machine:
 7. End the FSM with a `Finished` state and a transition from the last task state.
 
 Your completed FSM will look something like this:
-![image](https://github.com/cmusatyalab/wcacourse/assets/6760112/8feddc0d-666b-4c0f-bb9a-402852d5f406)
+![image](https://github.com/cmusatyalab/wcacourse/assets/6760112/85affe96-b80e-443f-8081-6dc093940789)
+
 
 Now, now `Export` the FSM to your laptop. The `app.pbfsm` file will be used in the following steps.
 
