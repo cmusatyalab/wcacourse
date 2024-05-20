@@ -1,7 +1,7 @@
 # Wearable Cognitive Assistance Student Project Guide
 In this class, you will build your own wearable cognitive assistance (WCA) "Sandwich" application. This guide is intended to walk you through the application creation and testing process. At the end of the exercise, you should have a working "toy" application that includes all the current capabilities of CMU's WCA application platform.
 
-Each student will be assigned to a team. The team specific information is provided at the end of this guide. Each team will execute the following steps in creating the application:
+Each student will be assigned to a team. The **team specific information is provided at the end of this guide**. Each team will execute the following steps in creating the application:
 
 1. **Data Collection** -- Use your smart phone to collect videos of the sandwich components and sub-assemblies. These videos will be used in the following two steps to create a training and testing dataset for a WCA object detector.
 2. **Video Upload** -- Upload your videos to the CVAT annotation tool.
