@@ -43,8 +43,7 @@ Using the browser on the smartphone:
 In this step, you are labeling the objects and sub-assemblies in your application. You will use [CVAT](https://docs.cvat.ai/docs/) to do the labeling (*aka annotation*).
 * Using the browser on the laptop, navigate to [CVAT](https://cvat.cmusatyalab.org/auth/login) and [login](https://github.com/cmusatyalab/wcacourse/edit/main/README.md#team-specific-information).
 * Open the project you created from your phone.
-* Add the labels that you will use in your project. Now, open the task.
-* Create a new job and open it.
+* Add the labels that you will use in your project. Now, open the task and the job shown.
 * Add labels to your video starting from the beginning.
 * When you are done labeling, `Save`. Then, go to the `Jobs` page, find your job, click the three dots and select `Finish Job`.
 
