@@ -23,7 +23,7 @@ Your development environment consists of three components:
 3. An *Android smartphone* that serves as a video data capture device and as the WCA application client.
 
 ## Data Collection
-Take video(s) of a total of 1-2 minutes in length using your smartphone camera. Videos should contain the all the objects individually and the sub-assemblies of objects.  <NEED SOME HELP WITH THIS>
+Take video(s) of a total of 1-2 minutes in length using your smartphone camera. Videos should contain the first object individually (*usually, the bread*) and the sub-assemblies of objects.
 
 ### *Pro Tips*
 * Take your videos from a variety of directions and orientations.
