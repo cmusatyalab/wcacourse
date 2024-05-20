@@ -54,7 +54,7 @@ In this step, you are labeling the objects and sub-assemblies in your applicatio
 * Make sure you use `Track` when you initiate labeling of a particular object.
 
 ## Prepare the Dataset for Training
-SSH into your VM from the laptop and then download and manipulate the dataset using opentpod-tools and datumaro. See the [opentpod-tools](https://github.com/cmusatyalab/opentpod-tools) for more info.
+SSH into your cloudlet from the laptop and then download and manipulate the dataset using opentpod-tools and datumaro. See the [opentpod-tools](https://github.com/cmusatyalab/opentpod-tools) for more info.
 
 ```sh
 # On laptop
