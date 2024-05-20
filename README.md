@@ -62,7 +62,7 @@ SSH into your VM from the laptop and then download and manipulate the dataset us
 # On cloudlet
 $ source venv-opentpod/bin/activate
 # Download the dataset
-$ tpod-download --project <PROJECTNO> --url https://cvat.cmusatyalab.org --username <CVATUSERNAME> --password <CVATPASSWORD> --project <YOURPOJECTNO>
+$ tpod-download --project <PROJECTNO> --url https://cvat.cmusatyalab.org --username <CVATUSERNAME> --password <CVATPASSWORD>
 ```
 Find the directory called `datumaro_project_<YOURPROJECTNO>`. This is your `DATASETNAME`. Now, remove frames with no annotations:
 ```sh
