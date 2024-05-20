@@ -108,9 +108,13 @@ The results of the training can be found in `yolo-project/train`. The model you 
 
 
 ## Define the Application Logic
-Use the *OpenWorkFlow* tool to define a finite state machine (FSM) and corresponding user prompts for your application. [Documentation](https://github.com/cmusatyalab/OpenWorkflow) [Access the Tool](https://cmusatyalab.github.io/OpenWorkflow/)
+Use the *OpenWorkFlow* tool to define a finite state machine (FSM) and corresponding user prompts for your application. 
 
-From the OpenWorkFlow, create your application finite state machine:
+[OpenWorkFlow Documentation](https://github.com/cmusatyalab/OpenWorkflow) 
+
+[Access OpenWorkFlow](https://cmusatyalab.github.io/OpenWorkflow/)
+
+From OpenWorkFlow, create your application finite state machine:
 1. Create a `Start` state.
 2. Create your first task state (e.g., `Bread`). Add a `YoloProcessor` to this state. Make sure you add in the conf_threshold. Leaving the default will cause an error. The model_path should be `/home/wcastudent/model/best.pt`.
 3. Add a transition between the Start state and the Bread state. Enter in an `Audio Instruction` for the task that the user should do to progress to the Bread state (e.g., *Put the Bread on the Table*). Add a Do not add a predicate.
