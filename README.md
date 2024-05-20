@@ -60,7 +60,7 @@ SSH into your cloudlet from the laptop and then download and manipulate the data
 
 ```sh
 # On laptop
-> ssh -i ~/.ssh/wca-student.pem wcastudent@<DOMAIN_NAME>
+> ssh -i ~/.ssh/wca-student.pem wcastudent@<CLOUDLET_NAME>
 # On cloudlet
 $ source venv-opentpod/bin/activate
 # Download the dataset
@@ -130,11 +130,11 @@ Now, now `Export` the FSM to your laptop. The `app.pbfsm` file will be used in t
 
 Upload the `app.pbfsm` file to the cloudlet. From your laptop:
 ```sh
-$ scp -i ~/.ssh/wca-student.pem <PATH_TO_app.pbfsm> wcastudent@<DOMAIN_NAME>:GatingWCA/server/app.pbfsm
+$ scp -i ~/.ssh/wca-student.pem <PATH_TO_app.pbfsm> wcastudent@<CLOUDLET_NAME>:GatingWCA/server/app.pbfsm
 ```
 Login to your backend:
 ```sh
-$ ssh -i ~/.ssh/wca-student.pem wcastudent@<DOMAIN_NAME>
+$ ssh -i ~/.ssh/wca-student.pem wcastudent@<CLOUDLET_NAME>
 ```
 Make sure your trained model is in `/home/wcastudent/models`
 
