@@ -98,6 +98,8 @@ Train a yolo model using the curated dataset. For more information on yolo, see 
 ```sh
 $ yolo detect train data=$(pwd)/yolo-dataset/data.yaml model=yolov8n.pt epochs=100 imgsz=640 project=yolo-project
 ```
+While training is happening, feel free to move to the *Define the Application Logic* step.
+
 The results of the training can be found in `yolo-project/train`. The model you will use later is `yolo-project/train/weights/best.pt`. Copy this file to `/home/wcastudent/models`.
 
 ### *Pro Tips*
