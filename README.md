@@ -17,10 +17,11 @@ At this point, you are ready and able to actually use your sandwich application.
 
 These steps are described in more detail below. 
 
-Your development environment consists of three components:
+Your development environment consists of four components:
 1. A *linux laptop* that you will use to connect to CVAT, OpenTPOD, OpenWorkFlow, and the GatingWCA server.
 2. A *cloudlet (actually, an AWS VM)* that is preconfigured with the credentials and components you need.
 3. An *Android smartphone* that serves as a video data capture device and as the WCA application client.
+4. A *sandwich kit* that your application will assist a naive user to create.
 
 ## Data Collection
 Take video(s) of a total of 1-2 minutes in length using your smartphone camera. Videos should contain the first object individually (*usually, the bread*) and the sub-assemblies of objects.
