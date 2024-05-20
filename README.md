@@ -47,6 +47,8 @@ In this step, you are labeling the objects and sub-assemblies in your applicatio
 * Add labels to your video starting from the beginning.
 * When you are done labeling, `Save`. Then, go to the `Jobs` page, find your job, click the three dots and select `Finish Job`.
 
+For more information on how to use CVAT
+
 ### *Pro Tips*
 * You will need a task for each video that you label.
 * You can select the method (e.g., rectangle, polygon) you will use to draw bounding boxes around your objects when you create the label. If you select `Any`, you can use different methods as you annotate. Polygons are more accurate than other methods. Rectangles are easier to reposition.
