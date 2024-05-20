@@ -151,12 +151,12 @@ On your smartphone home screen, select the `WCA` icon. Make sure that Wi-Fi is o
 
 ## Team Specific Information
 
-| Team | Laptop Info|Essential Phone|CVAT Username| CLOUDLET NAME                 | IP Address     |PlayStore Account                  |
-| ---- | ----|----|----|----|----|----|
-| 1    | soar|  lm1  |lmtraining1  | lmtraining1.livingedgelab.org | 52.21.253.39   |cmusatyalab001@gmail.com |
-| 2    | dip|  lm2  |lmtraining2  | lmtraining2.livingedgelab.org | 34.202.133.19  |cmusatyalab002@gmail.com |
-| 3    | swoop  |  lm3  |lmtraining3  | lmtraining3.livingedgelab.org | 34.230.218.14  |cmusatyalab003@gmail.com |
-| 4    | dive  |lm4  |lmtraining4  | lmtraining4.livingedgelab.org | 174.129.14.131 |cmusatyalab004@gmail.com |
+| Team | Laptop Info|Essential Phone|CVAT Username| Cloudlet Name                 | IP Address     |
+| ---- | ----|----|----|----|----|
+| 1    | soar|  lm1  |lmtraining1  | lmtraining1.livingedgelab.org | 52.21.253.39   |
+| 2    | dip|  lm2  |lmtraining2  | lmtraining2.livingedgelab.org | 34.202.133.19  |
+| 3    | swoop  |  lm3  |lmtraining3  | lmtraining3.livingedgelab.org | 34.230.218.14  |
+| 4    | dive  |lm4  |lmtraining4  | lmtraining4.livingedgelab.org | 174.129.14.131 |
 
 
 
