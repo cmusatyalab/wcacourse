@@ -13,6 +13,8 @@ Each student will be assigned to a team. The **team specific information is prov
 9. **Run the WCA Backend** -- Start the *GatingWCA* server on the cloudlet. This server executes your application logic.
 10. **Connect your WCA Client to the Backend** -- Launch the client application which will establish a connection to your backend GatingWCA server.
 
+![image](https://github.com/cmusatyalab/wcacourse/assets/6760112/cba8bd86-5c5a-4b8b-8c6f-00f5f104f6c8)
+
 At this point, you are ready and able to actually use your sandwich application. You may find that you need to iterate some or all of these steps in order to get an acceptable detector and tune your FSM.
 
 These steps are described in more detail below. 
