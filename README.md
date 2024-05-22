@@ -103,7 +103,7 @@ The results of the training can be found in `yolo-project/train`. The model you 
 
 ### *Pro Tips*
 * If you want to see the training results, inspect `yolo-project/train/results.csv`. The images in this directory show various plots of the training metrics. To view these plots, `scp` the files back to your laptop.
-* After the first training iteration, subsequent training results will be in `yolo-project/traing<ITERATION_NO>`. Make sure to update the model in `/home/wcastudent/models` after each successful iteration.
+* After the first training iteration, subsequent training results will be in `yolo-project/train<ITERATION_NO>`. Make sure to update the model in `/home/wcastudent/models` after each successful iteration.
 
 
 ## Define the Application Logic
