@@ -100,6 +100,9 @@ $ yolo detect train data=$(pwd)/yolo-dataset/data.yaml model=yolov8n.pt epochs=1
 While training is happening, feel free to move to the *Define the Application Logic* step.
 
 The results of the training can be found in `yolo-project/train`. The model you will use later is `yolo-project/train/weights/best.pt`. Copy this file to `/home/wcastudent/models`.
+```sh
+$ cp  yolo-project/train/weights/best.pt /home/wcastudent/models
+```
 
 ### *Pro Tips*
 * If you want to see the training results, inspect `yolo-project/train/results.csv`. The images in this directory show various plots of the training metrics. To view these plots, `scp` the files back to your laptop.
